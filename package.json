@@ -1,0 +1,24 @@
+{
+  "name": "components_1930",
+  "version": "1.0.0",
+  "description": "",
+  "main": "app.js",
+  "scripts": {
+    "start": "static",
+    "lint": "jshint blocks/*/**.js --config=.jshintrc"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/iketari/clickers.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/iketari/clickers/issues"
+  },
+  "homepage": "https://github.com/iketari/clickers#readme",
+  "devDependencies": {
+    "jshint": "^2.9.2"
+  }
+}

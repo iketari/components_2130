@@ -1,0 +1,43 @@
+.menu {
+	padding: 10px;
+}
+
+.menu__title {
+	text-align: center;
+	font-size: 20px;
+}
+
+.close {
+  position: absolute;
+  right: 32px;
+  top: 0;
+  width: 32px;
+  height: 32px;
+  opacity: 0.3;
+  cursor: pointer;
+}
+.close:hover {
+  opacity: 1;
+}
+.close:before, .close:after {
+  position: absolute;
+  left: 15px;
+  content: ' ';
+  height: 33px;
+  width: 2px;
+  background-color: #333;
+}
+.close:before {
+  transform: rotate(45deg);
+}
+.close:after {
+  transform: rotate(-45deg);
+}
+
+.pure-menu-item .close {
+  display: none;
+}
+
+.pure-menu-item:hover .close {
+  display: block;
+}
