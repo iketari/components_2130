@@ -1,9 +1,39 @@
-.menu {
-
+.menu__title {
+    cursor: pointer;
+    margin: 15px 0;
 }
 
 .menu__item {
 	background-color: #ececec;
 	padding: 10px;
 	margin-bottom: 10px;
+    position: relative;
+}
+
+.item__close-button {
+    position: absolute;
+    top: 3px;
+    right: 3px;
+    height: 30px;
+    width: 30px;
+    cursor: pointer;
+}
+
+.item__close-button::before,
+.item__close-button::after {
+    content: '';
+    position: absolute;
+    height: 2px;
+    width: 100%;
+    top: 50%;
+    left: 0;
+    background: #999;
+}
+
+.item__close-button::before {
+    transform: rotate(45deg);
+}
+
+.item__close-button::after {
+    transform: rotate(-45deg);
 }

@@ -1,3 +1,5 @@
+'use strict';
+
 class Menu {
 	constructor(options) {
 		this.el = options.el;
@@ -11,19 +13,38 @@ class Menu {
 	}
 
 	_onClick (event) {
-		let isItemClick = false;
+		// let isItemClick = false;
+
 		if (event.target.classList.contains('menu__item')) {
-			isItemClick = true;
+			// isItemClick = true;
 			this._onItemClick(event);
 		}
 
-		if (!isItemClick) {
-			this.list.hidden = !this.list.hidden;
+		if (event.target.classList.contains('item__close-button')) {
+			this._closeButtonClick(event);
 		}
+
+		if (event.target.classList.contains('menu__title')) {
+			this._hideMenu(event);
+		}
+
+		// if (!isItemClick) {
+		// 	this.list.hidden = !this.list.hidden;
+		// }
 	}
 
 	_onItemClick (event) {
 		console.log('Click on item', event.target);
+	}
+
+	_closeButtonClick(event) {
+		console.log('Remove item', event.target.parentNode);
+
+		event.target.parentNode.remove();
+	}
+
+	_hideMenu (event) {
+		this.list.hidden = !this.list.hidden;
 	}
 
 }
