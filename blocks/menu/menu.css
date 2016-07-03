@@ -3,8 +3,13 @@
 }
 
 .menu__title {
+	background-image: url(https://learn.javascript.ru/img/sitetoolbar__logo_small.svg);
+    background-position: 0px -9px;
+    background-repeat: no-repeat;
+
 	text-align: center;
-	font-size: 20px;
+    font-size: 19px;
+    padding-left: 90px;
 }
 
 .close {
