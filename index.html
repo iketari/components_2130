@@ -11,27 +11,28 @@
 <body>
 
 <div class="app">
-
-	<div class="menu pure-menu custom-restricted-width">
-		<span class="menu__title pure-menu-heading">Single Page Application</span>
-		<ul class="menu__list pure-menu-list">
-			<li class="pure-menu-item" data-index="0">
-				<a class="pure-menu-link" href="https://vk.com" data-action="pick">vk.com</a>
-				<i class="close" data-action="remove"></i>	
-			</li>
-			<li class="pure-menu-item" data-index="1">
-				<a class="pure-menu-link" href="https://ok.ru" data-action="pick">ok.ru</a>
-				<i class="close" data-action="remove"></i>
-			</li>
-			<li class="pure-menu-item" data-index="2">
-				<a class="pure-menu-link" href="https://yahoo.com" data-action="pick">yahoo.com</a>
-				<i class="close" data-action="remove"></i>
-			</li>
-		</ul>
-	</div>	
+	<div class="js-menu"></div>
 </div>
 
 
+<script type="text/x-tmpl" id="menu">
+	<div class="menu pure-menu custom-restricted-width">
+		<span class="menu__title pure-menu-heading">
+			<%this.title%>
+		</span>
+		<ul class="menu__list pure-menu-list">
+
+			<%for (let i=0; i<this.items.length; i++) {%>
+				<li class="pure-menu-item" data-index="<%i%>">
+					<a class="pure-menu-link" href="<%this.items[i].href%>" data-action="pick">
+						<%this.items[i].anchor%>
+					</a>
+					<i class="close" data-action="remove"></i>	
+				</li>
+			<%}%>
+		</ul>
+	</div>
+</script>
 
 
 
