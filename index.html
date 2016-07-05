@@ -6,12 +6,14 @@
 	<meta name="viewport" content="width=device-width, initial-scale=1" />
 	<link rel="stylesheet" type="text/css" href="./libs/pure-min/pure-min.css">
 	<link rel="stylesheet" type="text/css" href="./blocks/menu/menu.css">
+	<link rel="stylesheet" type="text/css" href="./blocks/form/form.css">
 	<link rel="stylesheet" type="text/css" href="./blocks/app/app.css">
 </head>
 <body>
 
 <div class="app">
 	<div class="js-menu"></div>
+	<div class="js-form"></div>
 </div>
 
 
@@ -34,10 +36,22 @@
 	</div>
 </script>
 
+<script type="text/x-tmpl" id="form">
+	<form class="form pure-form">
+		<fieldset>
+			<input class="form__input" type="url" name="href" required="required" placeholder="url"/>
+			<input class="form__input" type="text" name="anchor" required="required" placeholder="anchor"/>
+			<button class="form__btn pure-button" type="submit">Save</button>
+		</fieldset>
+	</form>
+</script>
+
 
 
 <!-- Dependencies -->
 <script type="text/javascript" src="./blocks/menu/menu.js"></script>
+<script type="text/javascript" src="./blocks/form/form.js"></script>
+<script type="text/javascript" src="./libs/templateEngine/index.js"></script>
 
 <!-- Application -->
 <script type="text/javascript" src="./blocks/app/app.js"></script>

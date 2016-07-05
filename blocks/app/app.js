@@ -1,10 +1,13 @@
 (function () {
 	'use strict';
 
+	//import
 	let Menu = window.Menu;
+	let Form = window.Form;
 
 	let menu = new Menu({
 		el: document.querySelector('.js-menu'),
+		tmpl: '#menu',
 		data: {
 			title: 'SINGLE PAGE APPLICATION',
 			items: [
@@ -28,13 +31,17 @@
 		}
 	});
 
+	let form = new Form({
+		el: document.querySelector('.js-form'),
+		tmpl: '#form'
+	})
+
 	menu.el.addEventListener('remove', function (event) {
-		debugger;
+		menu.removeItem(event.detail);
 	});
 
-
-	menu.el.addEventListener('pick', function (event) {
-		debugger;
+	form.el.addEventListener('add', function (event) {
+		menu.addItem(event.detail);
 	});
 
 	window.menu = menu;
