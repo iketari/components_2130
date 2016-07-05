@@ -34,7 +34,7 @@
 	let form = new Form({
 		el: document.querySelector('.js-form'),
 		tmpl: '#form'
-	})
+	});
 
 	menu.el.addEventListener('remove', function (event) {
 		menu.removeItem(event.detail);

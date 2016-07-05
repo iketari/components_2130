@@ -1,6 +1,9 @@
 (function() {
 	'use strict';
 
+	//import
+	let templateEngine = window.templateEngine;
+
 	/**
 	 * @class Menu
 	 * Компонента "Меню"
@@ -33,6 +36,10 @@
 			this.render();
 		}
 
+		/**
+		 * Удаляем пункт меню из данных
+		 * @param  {Object} removedItem
+		 */
 		removeItem (removedItem) {
 			this.data.items = this.data.items.filter((item, index) => {
 				return index !== removedItem.index;
@@ -44,7 +51,7 @@
 		 * Создаем HTML
 		 */
 		render () {
-			this.el.innerHTML = TemplateEngine(this._template, this.data);
+			this.el.innerHTML = templateEngine(this._template, this.data);
 		}
 
 		/**

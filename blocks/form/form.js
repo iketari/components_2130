@@ -1,5 +1,8 @@
-(function (argument) {
+(function () {
 	'use strict';
+
+	//import
+	let templateEngine = window.templateEngine;
 
 	/**
 	 * @class Form
@@ -24,7 +27,7 @@
 		 * Создаем HTML
 		 */
 		render () {
-			this.el.innerHTML = TemplateEngine(this._template, this.data);
+			this.el.innerHTML = templateEngine(this._template, this.data);
 		}
 
 
