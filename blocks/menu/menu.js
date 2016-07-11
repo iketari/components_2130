@@ -19,11 +19,7 @@
 			this.data = opts.data;
 			this._template = document.querySelector(opts.tmpl).innerHTML;
 
-			this.render();
-
-			this.list = this.el.querySelector('.menu__list');
-			this.title = this.el.querySelector('.menu__title');
-
+			// this.render();
 			this._initEvents();
 		}
 
@@ -49,8 +45,13 @@
 
 		/**
 		 * Создаем HTML
+		 * @param {Object} data
 		 */
-		render () {
+		render (data) {
+			if (data) {
+				this.data = data;
+			}
+
 			this.el.innerHTML = templateEngine(this._template, this.data);
 		}
 

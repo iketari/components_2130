@@ -4,31 +4,15 @@
 	//import
 	let Menu = window.Menu;
 	let Form = window.Form;
+	let Model = window.Model;
+
+	let model = new Model({
+		url: '/data/menu.json'
+	});
 
 	let menu = new Menu({
 		el: document.querySelector('.js-menu'),
 		tmpl: '#menu',
-		data: {
-			title: 'SINGLE PAGE APPLICATION',
-			items: [
-				{
-					href: 'https://vk.com',
-					anchor: 'vk.com'
-				},
-				{
-					href: 'https://ok.ru',
-					anchor: 'ok.ru'
-				},
-				{
-					href: 'https://yahoo.com',
-					anchor: 'yahoo.com'
-				},
-				{
-					href: 'https://yandex.ru',
-					anchor: 'yandex.ru'
-				}
-			]
-		}
 	});
 
 	let form = new Form({
@@ -43,6 +27,8 @@
 	form.el.addEventListener('add', function (event) {
 		menu.addItem(event.detail);
 	});
+
+	model.fetch(menu.render.bind(menu));
 
 	window.menu = menu;
 
