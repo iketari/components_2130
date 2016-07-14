@@ -1,56 +1,129 @@
-(function () {
+(function() {
 	'use strict';
 
+	const BASE_URL = 'https://javascriptru.firebaseio.com';
+
+	/**
+	 * Модель данных меню
+	 * @class Model
+	 */
 	class Model {
-		constructor (opts) {
-			this.data = opts.data || {};
-			this.url = opts.url;
+
+		/**
+		 * Конструктор модели
+		 * @param  {Objcet} options
+		 * @param  {string} options.url
+		 */
+		constructor({resource, id, data = {}}) {
+			this.data = data;
+			this.resource = resource;
+			this.id = id;
 		}
-	
+
+		/**
+		 * Геттер для данных модели
+		 * @return {Object}
+		 */
 		getData () {
 			return this.data;
 		}
 
+		/**
+		 * Сеттер для данных модели
+		 * @param {Object} data
+		 */
 		setData (data) {
 			this.data = data;
 		}
 
 		/**
-		 * Забрать данные с сервера
+		 * Загрузка данных с сервера
 		 * @param  {Function} resolve
 		 * @return {XMLHttpRequest}
 		 */
 		fetch (resolve) {
-			let req = this._makeRequest('GET');
+			let req = this._makeRequest('GET', req => {
+				let data = this.parse(req.responseText);
+				this.data = data;
 
-			req.onreadystatechange = () => {
-				if (req.readyState !== 4) return;
-
-				if (req.status === 200) {
-					let dataString = req.responseText;
-					this.setData(JSON.parse(dataString));
-					resolve(this.getData());
-				}
-			}
+				resolve(this.getData());
+			});
 
 			req.send();
+
+			return req;
 		}
 
 		/**
-		 * Создане объекта запроса
-		 * @param  {string} method
-		 * @return {XHLHttpRequesr}
+		 * Сохранение данных на сервере
+		 * @param  {Function} resolve
+		 * @return {XMLHttpRequest}
 		 */
-		_makeRequest (method) {
-			let xhr = new XMLHttpRequest();
+		save (resolve) {
+			let req = this._makeRequest('PUT', req => {
+				let data = this.parse(req.responseText);
+				this.data = data;
 
-			xhr.open(method, this.url, true);
+				resolve(this);
+			});
+
+			let reqString = JSON.stringify(this.getData());
+			req.send(reqString);
+
+			return req;
+		}
+
+		/**
+		 * Создание объекта запроса
+		 * @param {string} method - HTTP method
+		 * @param {Function} success - callback
+		 * @return {XMLHttpRequest}
+		 */
+		_makeRequest (method, success) {
+			let xhr = new XMLHttpRequest();
+			let url = this._getUrl(method);
+
+			xhr.open(method, url, false);
+
+			xhr.onreadystatechange = () => {
+				if (xhr.readyState !== 4) return;
+
+				if (xhr.status !== 200) {
+					//TODO: обаботать ошибки запроса
+				} else {
+					success(xhr);
+				}
+			};
 
 			return xhr;
 		}
+
+		/**
+		 * Выбор URL в зависимости от метода
+		 * @param  {string} [method]
+		 * @return {string}
+		 */
+		_getUrl () {
+			let url = `${BASE_URL}/${this.resource}`;
+
+			if (this.id) {
+				url += `/${this.id}`;
+			}
+
+			return `${url}.json`;
+		}
+
+		/**
+		 * Преобразлвание тескта отвева в данные
+		 * @param {string} responseText
+		 * @return {Object}
+		 */
+		parse (responseText) {
+			return JSON.parse(responseText);
+		}
+
 	}
 
 	//export
 	window.Model = Model;
-
 })();

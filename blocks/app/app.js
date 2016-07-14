@@ -7,7 +7,8 @@
 	let Model = window.Model;
 
 	let model = new Model({
-		url: '/data/menu.json'
+		resource: 'menu',
+		id: '-KIIIl-A1w7peqCRVZ0R'
 	});
 
 	let menu = new Menu({
@@ -26,6 +27,8 @@
 
 	form.el.addEventListener('add', function (event) {
 		menu.addItem(event.detail);
+		model.setData(menu.data);
+		model.save();
 	});
 
 	model.fetch(menu.render.bind(menu));
