@@ -1,6 +1,3 @@
-(function() {
-	'use strict';
-
 	const BASE_URL = 'https://javascriptru.firebaseio.com';
 
 	/**
@@ -125,5 +122,4 @@
 	}
 
 	//export
-	window.Model = Model;
-})();
+	export default Model;

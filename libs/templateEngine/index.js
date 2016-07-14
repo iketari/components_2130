@@ -1,4 +1,3 @@
-(function () {
 	var templateEngine = function(html, options) {
 		var re = /<%([^%>]+)?%>/g, reExp = /(^( )?(if|for|else|switch|case|break|{|}))(.*)?/g, code = 'var r=[];\n', cursor = 0, match;
 		var add = function(line, js) {
@@ -16,5 +15,4 @@
 	}
 
 	//export
-	window.templateEngine = templateEngine;
-})();
+	export default templateEngine;

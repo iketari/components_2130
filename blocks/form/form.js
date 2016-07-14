@@ -1,8 +1,5 @@
-(function () {
-	'use strict';
-
 	//import
-	let templateEngine = window.templateEngine;
+	import templateEngine from './../../libs/templateEngine';
 
 	/**
 	 * @class Form
@@ -83,5 +80,4 @@
 
 
 	//export
-	window.Form = Form;
-})();
+	export default Form;

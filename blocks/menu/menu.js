@@ -1,8 +1,5 @@
-(function() {
-	'use strict';
-
 	//import
-	let templateEngine = window.templateEngine;
+	import templateEngine from './../../libs/templateEngine';
 
 	/**
 	 * @class Menu
@@ -124,6 +121,4 @@
 	}
 
 	// Export
-	window.Menu = Menu;
-
-})(window);
+	export default Menu

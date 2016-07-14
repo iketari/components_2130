@@ -1,10 +1,7 @@
-(function () {
-	'use strict';
-
 	//import
-	let Menu = window.Menu;
-	let Form = window.Form;
-	let Model = window.Model;
+	import Menu from './../menu/menu.js';
+	import Form from './../form/form.js';
+	import Model from './../model/model.js';
 
 	let model = new Model({
 		resource: 'menu',
@@ -32,7 +29,3 @@
 	});
 
 	model.fetch(menu.render.bind(menu));
-
-	window.menu = menu;
-
-})();
