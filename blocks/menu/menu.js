@@ -2,6 +2,8 @@
 	import templateEngine from './../../libs/templateEngine';
 	import template from './menu.jade';
 
+	import './menu.css';
+
 	/**
 	 * @class Menu
 	 * Компонента "Меню"
