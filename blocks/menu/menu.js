@@ -1,5 +1,6 @@
 	//import
 	import templateEngine from './../../libs/templateEngine';
+	import template from './menu.jade';
 
 	/**
 	 * @class Menu
@@ -14,7 +15,14 @@
 		constructor(opts) {
 			this.el = opts.el;
 			this.data = opts.data;
+
+			console.time('_template');
 			this._template = document.querySelector(opts.tmpl).innerHTML;
+			console.timeEnd('_template');
+
+			console.time('_templateJade');
+			this._templateJade = template;
+			console.timeEnd('_templateJade');
 
 			// this.render();
 			this._initEvents();
@@ -49,7 +57,13 @@
 				this.data = data;
 			}
 
+			console.time('templateEngine()');
 			this.el.innerHTML = templateEngine(this._template, this.data);
+			console.timeEnd('templateEngine()');
+
+			console.time('this._templateJade(this.data)');
+			this.el.innerHTML = this._templateJade(this.data);
+			console.timeEnd('this._templateJade(this.data)');
 		}
 
 		/**
